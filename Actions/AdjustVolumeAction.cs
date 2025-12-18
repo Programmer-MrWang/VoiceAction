@@ -10,7 +10,7 @@ using VoiceAction.Settings;
 
 namespace VoiceAction.Actions;
 
-[ActionInfo("VoiceAction.AdjustVolume", "调整音量", "\ue767")]
+[ActionInfo("VoiceAction.AdjustVolume", "调整音量", "\uF013")]
 public class AdjustVolumeAction : ActionBase
 {
     private readonly ILogger<AdjustVolumeAction> _logger;
