@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.3.6" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.6" />
+		<PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.1.5" />
+		<PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.2.3" />
+		<PackageReference Include="ClassIsland.PluginSDK" Version="1.7.106-dev-v2" />
+		<PackageReference Include="ClassIsland.Core" Version="1.7.106-dev-v2" />
+		<PackageReference Include="Avalonia" Version="11.3.6" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="System.Text.Json" Version="9.0.2" />
+	</ItemGroup>
+</Project>
