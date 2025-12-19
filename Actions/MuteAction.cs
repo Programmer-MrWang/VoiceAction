@@ -24,8 +24,10 @@ public class MuteAction : ActionBase
         string batPath = Path.Combine(pluginDir, "jingyin.bat");
 
         string batContent = $@"@echo off
-cd /d ""{pluginDir}""
-powershell.exe -Command ""Set-AudioDevice -PlaybackMute $true""";
+setlocal
+set ""CUSTOM_MODULE_PATH={pluginDir}\AudioDeviceCmdlets.psd1""
+
+powershell -WindowStyle Hidden -NoProfile -Command ""Set-ExecutionPolicy Bypass -Scope CurrentUser -Force; Import-Module '%CUSTOM_MODULE_PATH%'; Set-AudioDevice -PlaybackMute $true""";
 
         await File.WriteAllTextAsync(batPath, batContent);
 

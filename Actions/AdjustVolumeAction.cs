@@ -1,5 +1,4 @@
-﻿// 文件 3: AdjustVolumeAction.cs
-using System;
+﻿using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -40,8 +39,11 @@ public class AdjustVolumeAction : ActionBase
         string batPath = Path.Combine(pluginDir, "tiaozheng.bat");
 
         string batContent = $@"@echo off
-cd /d ""{pluginDir}""
-powershell.exe -Command ""Set-AudioDevice -PlaybackVolume {volume}""";
+setlocal
+set ""CUSTOM_MODULE_PATH={pluginDir}\AudioDeviceCmdlets.psd1""
+powershell -WindowStyle Hidden -NoProfile -Command ""Set-ExecutionPolicy Bypass -Scope CurrentUser -Force; Import-Module '%CUSTOM_MODULE_PATH%'; Set-AudioDevice -PlaybackMute $false""
+
+powershell -WindowStyle Hidden -NoProfile -Command ""Set-ExecutionPolicy Bypass -Scope CurrentUser -Force; Import-Module '%CUSTOM_MODULE_PATH%'; Set-AudioDevice -PlaybackVolume {volume}""";
 
         await File.WriteAllTextAsync(batPath, batContent);
         _logger.LogInformation("已生成脚本: {Path}, 音量: {Volume}", batPath, volume);

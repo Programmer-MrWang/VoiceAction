@@ -24,8 +24,10 @@ public class UnmuteAction : ActionBase
         string batPath = Path.Combine(pluginDir, "quxiaojingyin.bat");
 
         string batContent = $@"@echo off
-cd /d ""{pluginDir}""
-powershell.exe -Command ""Set-AudioDevice -PlaybackMute $false""";
+setlocal
+set ""CUSTOM_MODULE_PATH={pluginDir}\AudioDeviceCmdlets.psd1""
+
+powershell -WindowStyle Hidden -NoProfile -Command ""Set-ExecutionPolicy Bypass -Scope CurrentUser -Force; Import-Module '%CUSTOM_MODULE_PATH%'; Set-AudioDevice -PlaybackMute $false""";
 
         await File.WriteAllTextAsync(batPath, batContent);
 
