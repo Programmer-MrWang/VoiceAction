@@ -5,7 +5,7 @@
 <img width="348" height="340" alt="icon" src="https://github.com/user-attachments/assets/b661f3c2-906f-4834-95cb-087d1f71232a" />
 
 ## 使用说明
-
+ - 需要先安装模块：PowerShell（管理员权限）中输入：  Install-Module -Name AudioDeviceCmdlets
  - 添加了有关调整电脑音量的一些“行动”，可在自动化中使用。
 
 ## 声明
