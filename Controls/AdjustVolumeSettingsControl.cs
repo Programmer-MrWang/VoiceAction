@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Data;
@@ -18,6 +19,8 @@ public class AdjustVolumeSettingsControl : ActionSettingsControlBase
     {
         SettingsInternal = new AdjustVolumeSettings();
 
+        LoadVolumeOnInitialize();
+
         var panel = new StackPanel { Spacing = 10, Margin = new(10) };
 
         panel.Children.Add(new TextBlock
@@ -32,22 +35,47 @@ public class AdjustVolumeSettingsControl : ActionSettingsControlBase
             [!TextBox.TextProperty] = new Binding(nameof(Settings.Volume))
         };
 
-        // 当 TextBox 失去焦点时验证并保存
         box.LostFocus += async (sender, e) => await OnVolumeInputChanged(box.Text);
 
         panel.Children.Add(box);
-
         Content = panel;
+    }
+
+    private void LoadVolumeOnInitialize()
+    {
+        try
+        {
+            string filePath = Path.Combine(GetPluginDirectory(), "int.json");
+
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                using var doc = JsonDocument.Parse(json);
+
+                if (doc.RootElement.TryGetProperty("volume", out var element) &&
+                    element.TryGetInt32(out int volume))
+                {
+                    SettingsInternal.Volume = Math.Clamp(volume, 0, 100);
+                    return;
+                }
+            }
+
+            // 无文件或解析失败时保持默认 50（已在类中定义）
+        }
+        catch
+        {
+            
+        }
     }
 
     private async Task OnVolumeInputChanged(string? inputText)
     {
-        // 验证输入是否为 0-100 的整数
         if (!int.TryParse(inputText, out int volume) || volume < 0 || volume > 100)
         {
-            return; // 验证失败，静默返回以保证兼容性
+            return; 
         }
 
+        SettingsInternal.Volume = volume; // 立即更新内存
         await SaveVolumeToFile(volume);
     }
 
@@ -56,13 +84,12 @@ public class AdjustVolumeSettingsControl : ActionSettingsControlBase
         try
         {
             string filePath = Path.Combine(GetPluginDirectory(), "int.json");
-            // 极简 JSON，避免额外依赖
             string json = $"{{\"volume\":{volume}}}";
             await File.WriteAllTextAsync(filePath, json);
         }
         catch
         {
-            // 保存失败不影响主功能，保证兼容性
+            
         }
     }
 
