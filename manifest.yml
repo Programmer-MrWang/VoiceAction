@@ -5,7 +5,7 @@
 
 id: voiceaction.for.core2
 name: VoiceAction
-description: 添加调整系统音量的功能(Windows)
+description: 提供调整系统音量的功能(Windows)
 entranceAssembly: "VoiceAction.dll"
 url: https://github.com/Programmer-MrWang/VoiceAction
 version: 1.2.0.0
