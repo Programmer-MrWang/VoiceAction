@@ -16,8 +16,8 @@ public class Plugin : PluginBase
     {
 
         //行动树
-        IActionService.ActionMenuTree.Add(new ActionMenuTreeGroup("调整音量", "\uF019"));
-        IActionService.ActionMenuTree["调整音量"].AddRange([
+        IActionService.ActionMenuTree.Add(new ActionMenuTreeGroup("设置音量", "\uF019"));
+        IActionService.ActionMenuTree["设置音量"].AddRange([
             new ActionMenuTreeItem("VoiceAction.AdjustVolume", "调整音量", "\uF013"),
             new ActionMenuTreeItem("VoiceAction.Mute", "静音", "\uF015"),
             new ActionMenuTreeItem("VoiceAction.Unmute", "取消静音", "\uF00D")
