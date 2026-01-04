@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace VoiceAction.Actions;
 
-[ActionInfo("VoiceAction.Unmute", "取消静音", "\uF00D")]
+[ActionInfo("VoiceAction.Unmute", "取消静音", "\uF00D", false)]
 public class UnmuteAction : ActionBase
 {
 

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace VoiceAction.Actions;
 
-[ActionInfo("VoiceAction.Mute", "静音", "\uF015")]
+[ActionInfo("VoiceAction.Mute", "静音", "\uF015",false)]
 public class MuteAction : ActionBase
 {
 
