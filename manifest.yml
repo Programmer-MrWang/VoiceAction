@@ -8,7 +8,7 @@ name: VoiceAction
 description: 提供调整系统音量的功能(Windows)
 entranceAssembly: "VoiceAction.dll"
 url: https://github.com/Programmer-MrWang/VoiceAction
-version: 1.2.2.0
+version: 1.2.3.0
 apiVersion: 2.0.0.0
 author: Programmer-MrWang
 readme: README.md
