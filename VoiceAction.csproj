@@ -6,13 +6,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.3.6" />
-		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.6" />
-		<PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.1.5" />
-		<PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.2.3" />
-		<PackageReference Include="ClassIsland.PluginSDK" Version="1.7.106-dev-v2" />
-		<PackageReference Include="ClassIsland.Core" Version="1.7.106-dev-v2" />
-		<PackageReference Include="Avalonia" Version="11.3.6" />
+		<PackageReference Include="ClassIsland.PluginSDK" Version="2.0.0.1" />
+		<PackageReference Include="ClassIsland.Core" Version="2.0.0.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="System.Text.Json" Version="9.0.2" />
 	</ItemGroup>
@@ -27,11 +22,5 @@
 	  <None Update="icon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-		<None Update="AudioDeviceCmdlets.dll">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="AudioDeviceCmdlets.psd1">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 	</ItemGroup>
 </Project>
